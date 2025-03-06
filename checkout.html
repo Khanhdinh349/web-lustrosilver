@@ -204,9 +204,15 @@
          document.getElementById('totalAmount').textContent = `$${orderSummary + additionalService}`;
 
          function updateQuantity(itemId, newQuantity) {
-            const item = cartItems.find(item => item.id === itemId);
-            if (item) {
-               item.quantity = parseInt(newQuantity, 10);
+            const itemIndex = cartItems.findIndex(item => item.id === itemId);
+            if (itemIndex !== -1) {
+               if (parseInt(newQuantity, 10) === 0) {
+                  // Remove item if quantity is 0
+                  cartItems.splice(itemIndex, 1);
+               } else {
+                  // Update quantity if not 0
+                  cartItems[itemIndex].quantity = parseInt(newQuantity, 10);
+               }
                localStorage.setItem('cartItems', JSON.stringify(cartItems));
                location.reload(); // Reload to update the displayed totals
             }
