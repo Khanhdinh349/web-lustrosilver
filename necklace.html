@@ -354,12 +354,130 @@
          document.getElementById("mySidenav").style.width = "0";
       }
 
+      const ringItems = [
+         { name: "Nhẫn ", image: "images/img-5.jpg" },
+         { name: "Nhẫn ", image: "images/img-6.jpg" },
+         { name: "Nhẫn ", image: "images/img-7.jpg" },
+         { name: "Nhẫn ", image: "images/img-8.jpg" },
+         { name: "Nhẫn ", image: "images/img-8-1.jpg" },
+         { name: "Nhẫn ", image: "images/img-8-2.jpg" },
+         { name: "Nhẫn ", image: "images/img-8-3.jpg" },
+         { name: "Nhẫn ", image: "images/img-8-4.jpg" }
+      ];
+
+      const braceletItems = [
+         { name: "Vòng Đeo Tay ", image: "images/img-1.jpg" },
+         { name: "Vòng Đeo Tay ", image: "images/img-2.jpg" },
+         { name: "Vòng Đeo Tay ", image: "images/img-3.jpg" },
+         { name: "Vòng Đeo Tay ", image: "images/img-4.jpg" },
+         { name: "Vòng Đeo Tay ", image: "images/img-1-1.jpg" },
+         { name: "Vòng Đeo Tay ", image: "images/img-1-2.jpg" },
+         { name: "Vòng Đeo Tay ", image: "images/img-1-3.jpg" },
+         { name: "Vòng Đeo Tay ", image: "images/img-1-4.jpg" },
+      ];
+
+      const earringItems = [
+         { name: "Bông Tai ", image: "images/img-9.jpg" },
+         { name: "Bông Tai ", image: "images/img-10.jpg" },
+         { name: "Bông Tai ", image: "images/img-11.jpg" },
+         { name: "Bông Tai ", image: "images/img-12.jpg" },
+         { name: "Bông Tai ", image: "images/img-8-1.jpg" },
+         { name: "Bông Tai ", image: "images/img-8-2.jpg" },
+         { name: "Bông Tai ", image: "images/img-8-3.jpg" },
+         { name: "Bông Tai ", image: "images/img-8-4.jpg" },
+      ];
+
+      const ankletItems = [
+         { name: "Lắc Chân ", image: "images/img-13.jpg" },
+         { name: "Lắc Chân ", image: "images/img-14.jpg" },
+         { name: "Lắc Chân ", image: "images/img-15.jpg" },
+         { name: "Lắc Chân ", image: "images/img-16.jpg" },
+         { name: "Lắc Chân ", image: "images/img-13-1.jpg" },
+         { name: "Lắc Chân ", image: "images/img-13-2.jpg" },
+         { name: "Lắc Chân ", image: "images/img-13-3.jpg" },
+         { name: "Lắc Chân ", image: "images/img-13-4.jpg" },
+      ];
+
+      const necklaceItems = [
+         { name: "Vòng Cổ ", image: "images/img-17.jpg" },
+         { name: "Vòng Cổ ", image: "images/img-18.jpg" },
+         { name: "Vòng Cổ ", image: "images/img-19.jpg" },
+         { name: "Vòng Cổ ", image: "images/img-20.jpg" },
+         { name: "Vòng Cổ ", image: "images/img-17-1.jpg" },
+         { name: "Vòng Cổ ", image: "images/img-17-2.jpg" },
+         { name: "Vòng Cổ ", image: "images/img-17-3.jpg" },
+         { name: "Vòng Cổ ", image: "images/img-17-4.jpg" },
+      ];
+
+      function showSuggestions(query) {
+         const suggestions = document.getElementById('suggestions');
+         suggestions.innerHTML = ''; // Clear previous suggestions
+
+         if (query.length === 0) {
+            suggestions.style.display = 'none';
+            return;
+         }
+
+         let filteredItems = [];
+         if (query.toLowerCase().includes('nhẫn')) {
+            filteredItems = ringItems;
+         } else if (query.toLowerCase().includes('vòng đeo tay')) {
+            filteredItems = braceletItems;
+         } else if (query.toLowerCase().includes('bông tai')) {
+            filteredItems = earringItems;
+         } else if (query.toLowerCase().includes('lắc chân')) {
+            filteredItems = ankletItems;
+         } else if (query.toLowerCase().includes('vòng cổ')) {
+            filteredItems = necklaceItems;
+         }
+
+         filteredItems.forEach(item => {
+            const li = document.createElement('li');
+            li.style.display = 'flex';
+            li.style.alignItems = 'center';
+            li.style.padding = '5px';
+            li.style.cursor = 'pointer';
+            li.onclick = () => redirectToCategoryPage(query);
+
+            const img = document.createElement('img');
+            img.src = item.image;
+            img.style.width = '40px';
+            img.style.height = '40px';
+            img.style.marginRight = '10px';
+
+            const text = document.createElement('span');
+            text.textContent = item.name;
+
+            li.appendChild(img);
+            li.appendChild(text);
+            suggestions.appendChild(li);
+         });
+
+         suggestions.style.display = filteredItems.length > 0 ? 'block' : 'none';
+      }
+
+      function redirectToCategoryPage(query) {
+         if (query.toLowerCase().includes('nhẫn')) {
+            window.location.href = 'ring.html';
+         } else if (query.toLowerCase().includes('vòng đeo tay')) {
+            window.location.href = 'bracelet.html';
+         } else if (query.toLowerCase().includes('bông tai')) {
+            window.location.href = 'earring.html';
+         } else if (query.toLowerCase().includes('lắc chân')) {
+            window.location.href = 'anklet.html';
+         } else if (query.toLowerCase().includes('vòng cổ')) {
+            window.location.href = 'necklace.html';
+         }
+      }
+
       function toggleSearch() {
          const searchInput = document.getElementById("searchInput");
          if (searchInput.style.display === "none" || searchInput.style.display === "") {
             searchInput.style.display = "inline-block";
+            searchInput.focus();
          } else {
             searchInput.style.display = "none";
+            document.getElementById('suggestions').style.display = 'none';
          }
       }
 
@@ -368,12 +486,17 @@
       });
 
       let cartCount = 0;
-      const cartItems = [];
+      let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
       let cartTimeout;
 
       function addToCart(productName, price, imageUrl) {
-         // Always add a new item to the cart
-         cartItems.push({ name: productName, price: price, image: imageUrl, quantity: 1 });
+         const existingItem = cartItems.find(item => item.name === productName);
+         if (existingItem) {
+            existingItem.quantity += 1;
+         } else {
+            cartItems.push({ name: productName, price: price, image: imageUrl, quantity: 1 });
+         }
+         localStorage.setItem('cartItems', JSON.stringify(cartItems));
          updateCartCount();
          updateCartNavbar();
       }
@@ -488,18 +611,18 @@
          window.location.href = 'checkout.html'; // Redirect to checkout.html
       }
 
+      // Reset the timeout whenever the cart is interacted with
+      document.getElementById("cartNavbar").addEventListener('mouseover', resetCartTimeout);
+      document.getElementById("cartNavbar").addEventListener('click', resetCartTimeout);
+
       function buyNow(productName, price, imageUrl) {
-         // Store the selected product for immediate checkout
-         const product = { name: productName, price: price, image: imageUrl, quantity: 1 };
-         localStorage.setItem('buyNowProduct', JSON.stringify(product));
+         // Clear the cart and add only the selected item for immediate checkout
+         cartItems = [{ name: productName, price: price, image: imageUrl, quantity: 1 }];
+         localStorage.setItem('cartItems', JSON.stringify(cartItems));
 
          // Redirect to checkout
          window.location.href = 'checkout.html';
       }
-
-      // Reset the timeout whenever the cart is interacted with
-      document.getElementById("cartNavbar").addEventListener('mouseover', resetCartTimeout);
-      document.getElementById("cartNavbar").addEventListener('click', resetCartTimeout);
    </script>
    <!-- cart navbar start -->
    <div id="cartNavbar" style="display: none; position: fixed; top: 0; right: 0; background-color: white; width: 300px; height: 100%; overflow-y: auto; box-shadow: -2px 0 5px rgba(0,0,0,0.5);">
