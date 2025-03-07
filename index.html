@@ -171,7 +171,7 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-4.jpg')">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-4.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -188,7 +188,7 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-5.jpg')">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-5.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -205,7 +205,7 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-9.jpg')">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-9.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -222,7 +222,7 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-12.jpg')">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-12.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -473,12 +473,17 @@
       });
 
       let cartCount = 0;
-      const cartItems = [];
+      let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
       let cartTimeout;
 
       function addToCart(productName, price, imageUrl) {
-         // Always add a new item to the cart
-         cartItems.push({ name: productName, price: price, image: imageUrl, quantity: 1 });
+         const existingItem = cartItems.find(item => item.name === productName);
+         if (existingItem) {
+            existingItem.quantity += 1;
+         } else {
+            cartItems.push({ name: productName, price: price, image: imageUrl, quantity: 1 });
+         }
+         localStorage.setItem('cartItems', JSON.stringify(cartItems));
          updateCartCount();
          updateCartNavbar();
       }
@@ -596,6 +601,15 @@
       // Reset the timeout whenever the cart is interacted with
       document.getElementById("cartNavbar").addEventListener('mouseover', resetCartTimeout);
       document.getElementById("cartNavbar").addEventListener('click', resetCartTimeout);
+
+      function buyNow(productName, price, imageUrl) {
+         // Clear the cart and add only the selected item for immediate checkout
+         cartItems = [{ name: productName, price: price, image: imageUrl, quantity: 1 }];
+         localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+         // Redirect to checkout
+         window.location.href = 'checkout.html';
+      }
    </script>
 </body>
 

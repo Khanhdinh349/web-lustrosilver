@@ -32,8 +32,8 @@
    <!-- owl stylesheets -->
    <link rel="stylesheet" href="css/owl.carousel.min.css">
    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
-      media="screen">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
    <style>
       /* Add this CSS to your existing styles */
@@ -68,7 +68,12 @@
               <div class="login_text">
                  <ul>
                     <li><a href="#"><img src="images/user-icon.png"></a></li>
-                    <li><a href="#" onclick="toggleCartNavbar()"><img src="images/bag-icon.png"><span id="cartCount">0</span></a></li>
+                    <li>
+                       <a href="#" onclick="toggleCartNavbar()" style="position: relative;">
+                          <img alt="cart" loading="lazy" width="18" height="18" decoding="async" data-nimg="1" src="https://cdn.pnj.io/images/image-update/layout/icon-cart-new.svg" style="color: transparent;">
+                          <span id="cartCount" style="position: absolute; bottom: -5px; right: -5px; background-color: red; color: white; border-radius: 50%; padding: 1px 4px; font-size: 8px;">0</span>
+                       </a>
+                    </li>
                     <li>
                        <button onclick="toggleSearch()">
                           <img src="images/search-icon.png">
@@ -102,7 +107,7 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-1.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-1.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
@@ -118,7 +123,7 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-2.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-2.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
@@ -135,7 +140,7 @@
                         <div class="buy_bt">
                            <ul>
 
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-3.jpg')" >Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-3.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
@@ -151,7 +156,7 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-4.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-4.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
@@ -169,7 +174,7 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-5.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-5.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
@@ -185,7 +190,7 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-6.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-6.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
@@ -201,7 +206,7 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-7.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-7.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
@@ -217,7 +222,7 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-8.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-8.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
@@ -235,7 +240,7 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-9.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-9.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
@@ -251,7 +256,7 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-10.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-10.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
@@ -267,7 +272,7 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-11.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-11.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
@@ -283,7 +288,7 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-12.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-12.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
@@ -301,7 +306,7 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-13.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-13.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
@@ -317,7 +322,7 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-14.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-14.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
@@ -333,7 +338,7 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-15.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-15.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
@@ -349,7 +354,7 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-16.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-16.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
@@ -367,7 +372,7 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-17.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-17.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
@@ -383,7 +388,7 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-18.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-18.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
@@ -399,7 +404,7 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-19.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-19.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
@@ -415,7 +420,7 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-20.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-20.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
@@ -568,22 +573,19 @@
          event.preventDefault();
       });
 
-      let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+      let cartCount = 0;
+      const cartItems = [];
+      let cartTimeout;
 
       function addToCart(productName, price, imageUrl) {
-         const existingItem = cartItems.find(item => item.name === productName);
-         if (existingItem) {
-            existingItem.quantity += 1;
-         } else {
-            cartItems.push({ name: productName, price: price, image: imageUrl, quantity: 1 });
-         }
-         localStorage.setItem('cartItems', JSON.stringify(cartItems));
+         // Always add a new item to the cart
+         cartItems.push({ name: productName, price: price, image: imageUrl, quantity: 1 });
          updateCartCount();
          updateCartNavbar();
       }
 
       function updateCartCount() {
-         const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+         cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
          document.getElementById("cartCount").innerText = cartCount;
       }
 
@@ -692,21 +694,18 @@
          window.location.href = 'checkout.html'; // Redirect to checkout.html
       }
 
-      // Reset the timeout whenever the cart is interacted with
-      document.getElementById("cartNavbar").addEventListener('mouseover', resetCartTimeout);
-      document.getElementById("cartNavbar").addEventListener('click', resetCartTimeout);
-
       function buyNow(productName, price, imageUrl) {
-         // Add to cart
-         addToCart(productName, price, imageUrl);
-
-         // Store for immediate checkout
+         // Store the selected product for immediate checkout
          const product = { name: productName, price: price, image: imageUrl, quantity: 1 };
          localStorage.setItem('buyNowProduct', JSON.stringify(product));
 
          // Redirect to checkout
          window.location.href = 'checkout.html';
       }
+
+      // Reset the timeout whenever the cart is interacted with
+      document.getElementById("cartNavbar").addEventListener('mouseover', resetCartTimeout);
+      document.getElementById("cartNavbar").addEventListener('click', resetCartTimeout);
    </script>
    <!-- cart navbar start -->
    <div id="cartNavbar" style="display: none; position: fixed; top: 0; right: 0; background-color: white; width: 300px; height: 100%; overflow-y: auto; box-shadow: -2px 0 5px rgba(0,0,0,0.5);">
