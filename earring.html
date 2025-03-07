@@ -58,20 +58,25 @@
             </div>
             <span class="toggle_icon" onclick="openNav()"><img src="images/toggle-icon.png"></span>
             <a class="logo" href="index.html"><img src="images/logo.png"></a></a>
-            <form class="form-inline " id = "searchForm">
-               <div div class="login_text">
-                  <ul>
-                     <li><a href="#"><img src="images/user-icon.png"></a></li>
-                     <li><a href="#"><img src="images/bag-icon.png"></a></li>
-                     <li>
-                     <button onclick="toggleSearch()">
-                        <img src="images/search-icon.png">
-                     </button>
-                     <input type="text" style="display: none;" id="searchInput" placeholder="Search" aria-label="Search">
-                     </li>
-                  </ul>
-               </div>
-            </form>
+            <form class="form-inline" id="searchForm">
+              <div class="login_text">
+                 <ul>
+                    <li><a href="#"><img src="images/user-icon.png"></a></li>
+                    <li>
+                       <a href="#" onclick="toggleCartNavbar()" style="position: relative;">
+                          <img alt="cart" loading="lazy" width="18" height="18" decoding="async" data-nimg="1" src="https://cdn.pnj.io/images/image-update/layout/icon-cart-new.svg" style="color: transparent;">
+                          <span id="cartCount" style="position: absolute; bottom: -5px; right: -5px; background-color: red; color: white; border-radius: 50%; padding: 1px 4px; font-size: 8px;">0</span>
+                       </a>
+                    </li>
+                    <li>
+                       <button onclick="toggleSearch()">
+                          <img src="images/search-icon.png">
+                       </button>
+                       <input type="text" style="display: none;" id="searchInput" placeholder="Search" aria-label="Search">
+                    </li>
+                 </ul>
+              </div>
+           </form>
          </nav>
       </div>
    </div>
@@ -96,7 +101,8 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-8.jpg')">Buy Now</a></li>
+                              <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-8.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
                         <h3 class="price_text">Price $30</h3>
@@ -111,8 +117,8 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-9.jpg')">Buy Now</a></li>
+                              <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-9.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
                         <h3 class="price_text">Price $30</h3>
@@ -127,8 +133,8 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-10.jpg')">Buy Now</a></li>
+                              <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-10.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
                         <h3 class="price_text">Price $30</h3>
@@ -143,8 +149,8 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-11.jpg')">Buy Now</a></li>
+                              <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-11.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
                         <h3 class="price_text">Price $30</h3>
@@ -161,8 +167,8 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-8-1.jpg')">Buy Now</a></li>
+                              <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-8-1.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
                         <h3 class="price_text">Price $30</h3>
@@ -177,8 +183,8 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-8-2.jpg')">Buy Now</a></li>
+                              <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-8-2.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
                         <h3 class="price_text">Price $30</h3>
@@ -193,8 +199,8 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-8-3.jpg')">Buy Now</a></li>
+                              <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-8-3.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
                         <h3 class="price_text">Price $30</h3>
@@ -209,8 +215,8 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-8-4.jpg')">Buy Now</a></li>
+                              <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-8-4.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
                         <h3 class="price_text">Price $30</h3>
@@ -359,7 +365,153 @@
       document.getElementById("searchForm").addEventListener("submit", function(event) {
          event.preventDefault();
       });
+
+      let cartCount = 0;
+      const cartItems = [];
+      let cartTimeout;
+
+      function addToCart(productName, price, imageUrl) {
+         // Always add a new item to the cart
+         cartItems.push({ name: productName, price: price, image: imageUrl, quantity: 1 });
+         updateCartCount();
+         updateCartNavbar();
+      }
+
+      function updateCartCount() {
+         cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+         document.getElementById("cartCount").innerText = cartCount;
+      }
+
+      function updateCartNavbar() {
+         const cartItemsList = document.getElementById("cartItems");
+         cartItemsList.innerHTML = '';
+         let totalPrice = 0;
+         cartItems.forEach((item, index) => {
+            const li = document.createElement('li');
+            li.style.display = 'flex';
+            li.style.alignItems = 'flex-start';
+            li.style.marginBottom = '20px';
+
+            const img = document.createElement('img');
+            img.src = item.image;
+            img.style.width = '80px';
+            img.style.height = '80px';
+            img.style.marginRight = '10px';
+
+            const details = document.createElement('div');
+            details.style.flex = '1';
+
+            const text = document.createElement('div');
+            text.textContent = item.name;
+            text.style.marginBottom = '5px';
+            text.style.fontSize = '18px';
+
+            const quantityControls = document.createElement('div');
+            quantityControls.style.display = 'flex';
+            quantityControls.style.alignItems = 'center';
+            quantityControls.style.marginBottom = '5px';
+
+            const minusButton = document.createElement('button');
+            minusButton.textContent = '-';
+            minusButton.style.margin = '0 5px';
+            minusButton.style.fontSize = '16px';
+            minusButton.onclick = () => changeQuantity(index, -1);
+
+            const quantityText = document.createElement('span');
+            quantityText.textContent = `x ${item.quantity}`;
+            quantityText.style.margin = '0 5px';
+            quantityText.style.fontSize = '16px';
+
+            const plusButton = document.createElement('button');
+            plusButton.textContent = '+';
+            plusButton.style.margin = '0 5px';
+            plusButton.style.fontSize = '16px';
+            plusButton.onclick = () => changeQuantity(index, 1);
+
+            const priceText = document.createElement('div');
+            priceText.textContent = `$${item.price * item.quantity}`;
+            priceText.style.textAlign = 'right';
+            priceText.style.fontSize = '18px';
+
+            quantityControls.appendChild(minusButton);
+            quantityControls.appendChild(quantityText);
+            quantityControls.appendChild(plusButton);
+
+            details.appendChild(text);
+            details.appendChild(quantityControls);
+            details.appendChild(priceText);
+
+            li.appendChild(img);
+            li.appendChild(details);
+            cartItemsList.appendChild(li);
+
+            totalPrice += item.price * item.quantity;
+         });
+
+         document.getElementById("totalPrice").textContent = `Total: $${totalPrice}`;
+      }
+
+      function changeQuantity(index, delta) {
+         cartItems[index].quantity += delta;
+         if (cartItems[index].quantity <= 0) {
+            cartItems.splice(index, 1);
+         }
+         updateCartCount();
+         updateCartNavbar();
+      }
+
+      function toggleCartNavbar() {
+         const cartNavbar = document.getElementById("cartNavbar");
+         if (cartNavbar.style.display === 'none' || cartNavbar.style.display === '') {
+            cartNavbar.style.display = 'block';
+            resetCartTimeout();
+         } else {
+            cartNavbar.style.display = 'none';
+            clearTimeout(cartTimeout);
+         }
+      }
+
+      function closeCartNavbar() {
+         document.getElementById("cartNavbar").style.display = 'none';
+         clearTimeout(cartTimeout);
+      }
+
+      function resetCartTimeout() {
+         clearTimeout(cartTimeout);
+         cartTimeout = setTimeout(closeCartNavbar, 5000); // 5000 milliseconds = 5 seconds
+      }
+
+      function checkout() {
+         // Store cart items in local storage
+         localStorage.setItem('cartItems', JSON.stringify(cartItems));
+         window.location.href = 'checkout.html'; // Redirect to checkout.html
+      }
+
+      function buyNow(productName, price, imageUrl) {
+         // Store the selected product for immediate checkout
+         const product = { name: productName, price: price, image: imageUrl, quantity: 1 };
+         localStorage.setItem('buyNowProduct', JSON.stringify(product));
+
+         // Redirect to checkout
+         window.location.href = 'checkout.html';
+      }
+
+      // Reset the timeout whenever the cart is interacted with
+      document.getElementById("cartNavbar").addEventListener('mouseover', resetCartTimeout);
+      document.getElementById("cartNavbar").addEventListener('click', resetCartTimeout);
    </script>
+   <!-- cart navbar start -->
+   <div id="cartNavbar" style="display: none; position: fixed; top: 0; right: 0; background-color: white; width: 300px; height: 100%; overflow-y: auto; box-shadow: -2px 0 5px rgba(0,0,0,0.5);">
+      <i class="fa-solid fa-circle-xmark" onclick="closeCartNavbar()" style="position: absolute; top: 10px; right: 10px; font-size: 24px; cursor: pointer;"></i>
+      <h2>Cart</h2>
+      <ul id="cartItems"></ul>
+      <div id="cartFooter" style="position: absolute; bottom: 0; width: 100%; background-color: #f8f8f8; padding: 10px; box-shadow: 0 -2px 5px rgba(0,0,0,0.1);">
+         <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span id="totalPrice" style="font-size: 18px;">Total: $0</span>
+            <button onclick="checkout()" style="padding: 5px 10px; font-size: 16px;">Checkout</button>
+         </div>
+      </div>
+   </div>
 </body>
 
 </html>
