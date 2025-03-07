@@ -21,7 +21,7 @@
    <!-- Responsive-->
    <link rel="stylesheet" href="css/responsive.css">
    <!-- fevicon -->
-   <link rel="icon" href="images/fevicon.png" type="image/gif" /> 
+   <link rel="icon" href="images/fevicon.png" type="image/gif" />
    <!-- Scrollbar Custom CSS -->
    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
    <!-- Tweaks for older IEs-->
@@ -58,21 +58,16 @@
            </div>
             <span class="toggle_icon" onclick="openNav()"><img src="images/toggle-icon.png"></span>
             <a class="logo" href="index.html"><img src="images/logo.png"></a></a>
-            <form class="form-inline" id="searchForm">
-               <div class="login_text">
+            <form class="form-inline " id = "searchForm">
+               <div div class="login_text">
                   <ul>
                      <li><a href="#"><img src="images/user-icon.png"></a></li>
+                     <li><a href="#"><img src="images/bag-icon.png"></a></li>
                      <li>
-                        <a href="#" onclick="toggleCartNavbar()" style="position: relative;">
-                           <img alt="cart" loading="lazy" width="18" height="18" decoding="async" data-nimg="1" src="https://cdn.pnj.io/images/image-update/layout/icon-cart-new.svg" style="color: transparent;">
-                           <span id="cartCount" style="position: absolute; bottom: -5px; right: -5px; background-color: red; color: white; border-radius: 50%; padding: 1px 4px; font-size: 8px;">0</span>
-                        </a>
-                     </li>
-                     <li>
-                        <button onclick="toggleSearch()">
-                           <img src="images/search-icon.png">
-                        </button>
-                        <input type="text" style="display: none;" id="searchInput" placeholder="Search" aria-label="Search">
+                     <button onclick="toggleSearch()">
+                        <img src="images/search-icon.png">
+                     </button>
+                     <input type="text" style="display: none;" id="searchInput" placeholder="Search" aria-label="Search">
                      </li>
                   </ul>
                </div>
@@ -101,7 +96,7 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-13.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-13.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -119,7 +114,7 @@
                         <div class="buy_bt">
                            <ul>
 
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-14.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-14.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -137,7 +132,7 @@
                         <div class="buy_bt">
                            <ul>
 
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-15.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-15.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -155,7 +150,7 @@
                         <div class="buy_bt">
                            <ul>
 
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-16.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-16.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -175,7 +170,7 @@
                         <div class="buy_bt">
                            <ul>
 
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-13-1.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-13-1.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -193,7 +188,7 @@
                         <div class="buy_bt">
                            <ul>
 
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-13-3.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-13-3.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -211,7 +206,7 @@
                         <div class="buy_bt">
                            <ul>
 
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-13-2.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-13-2.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -229,7 +224,7 @@
                         <div class="buy_bt">
                            <ul>
 
-                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-13-4.jpg')">Buy Now</a></li>
+                              <li><a href="#">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-13-4.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -384,22 +379,19 @@
          event.preventDefault();
       });
 
-      let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+      let cartCount = 0;
+      const cartItems = [];
+      let cartTimeout;
 
       function addToCart(productName, price, imageUrl) {
-         const existingItem = cartItems.find(item => item.name === productName);
-         if (existingItem) {
-            existingItem.quantity += 1;
-         } else {
-            cartItems.push({ name: productName, price: price, image: imageUrl, quantity: 1 });
-         }
-         localStorage.setItem('cartItems', JSON.stringify(cartItems));
+         // Always add a new item to the cart
+         cartItems.push({ name: productName, price: price, image: imageUrl, quantity: 1 });
          updateCartCount();
          updateCartNavbar();
       }
 
       function updateCartCount() {
-         const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+         cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
          document.getElementById("cartCount").innerText = cartCount;
       }
 
@@ -511,31 +503,7 @@
       // Reset the timeout whenever the cart is interacted with
       document.getElementById("cartNavbar").addEventListener('mouseover', resetCartTimeout);
       document.getElementById("cartNavbar").addEventListener('click', resetCartTimeout);
-
-      function buyNow(productName, price, imageUrl) {
-         // Add to cart
-         addToCart(productName, price, imageUrl);
-
-         // Store for immediate checkout
-         const product = { name: productName, price: price, image: imageUrl, quantity: 1 };
-         localStorage.setItem('buyNowProduct', JSON.stringify(product));
-
-         // Redirect to checkout
-         window.location.href = 'checkout.html';
-      }
    </script>
-   <!-- cart navbar start -->
-   <div id="cartNavbar" style="display: none; position: fixed; top: 0; right: 0; background-color: white; width: 300px; height: 100%; overflow-y: auto; box-shadow: -2px 0 5px rgba(0,0,0,0.5);">
-      <i class="fa-solid fa-circle-xmark" onclick="closeCartNavbar()" style="position: absolute; top: 10px; right: 10px; font-size: 24px; cursor: pointer;"></i>
-      <h2>Cart</h2>
-      <ul id="cartItems"></ul>
-      <div id="cartFooter" style="position: absolute; bottom: 0; width: 100%; background-color: #f8f8f8; padding: 10px; box-shadow: 0 -2px 5px rgba(0,0,0,0.1);">
-         <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span id="totalPrice" style="font-size: 18px;">Total: $0</span>
-            <button onclick="checkout()" style="padding: 5px 10px; font-size: 16px;">Checkout</button>
-         </div>
-      </div>
-   </div>
 </body>
 
 </html>

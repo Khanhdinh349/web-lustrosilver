@@ -10,7 +10,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
    <!-- site metas -->
-   <title>Necklace</title>
+   <title>Quan Tâm</title>
    <meta name="keywords" content="">
    <meta name="description" content="">
    <meta name="author" content="">
@@ -57,17 +57,22 @@
                <a href="contact.html">Contact</a>
            </div>
             <span class="toggle_icon" onclick="openNav()"><img src="images/toggle-icon.png"></span>
-            <a class="logo" href="index.html"><img src="images/logo.png"></a></a>
-            <form class="form-inline " id = "searchForm">
-               <div div class="login_text">
+            <a class="logo" href="index.html"><img src="./images/logo.png"></a>
+            <form class="form-inline" id="searchForm">
+               <div class="login_text">
                   <ul>
                      <li><a href="#"><img src="images/user-icon.png"></a></li>
-                     <li><a href="#"><img src="images/bag-icon.png"></a></li>
                      <li>
-                     <button onclick="toggleSearch()">
-                        <img src="images/search-icon.png">
-                     </button>
-                     <input type="text" style="display: none;" id="searchInput" placeholder="Search" aria-label="Search">
+                        <a href="#" onclick="toggleCartNavbar()" style="position: relative;">
+                           <img alt="cart" loading="lazy" width="18" height="18" decoding="async" data-nimg="1" src="https://cdn.pnj.io/images/image-update/layout/icon-cart-new.svg" style="color: transparent;">
+                           <span id="cartCount" style="position: absolute; bottom: -5px; right: -5px; background-color: red; color: white; border-radius: 50%; padding: 1px 4px; font-size: 8px;">0</span>
+                        </a>
+                     </li>
+                     <li>
+                        <button onclick="toggleSearch()">
+                           <img src="images/search-icon.png">
+                        </button>
+                        <input type="text" style="display: none;" id="searchInput" placeholder="Search" aria-label="Search">
                      </li>
                   </ul>
                </div>
@@ -75,183 +80,101 @@
          </nav>
       </div>
    </div>
-
    <!-- header section end -->
-   <!-- product section start -->
-   <div class="product_section layout_padding">
-      <div class="container">
-         <div class="row">
-            <div class="col-sm-12">
-               <h1 class="product_taital">LUSTRO SILVER</h1>
-               <p class="product_text">Nâng tầm phong cách, khẳng định đẳng cấp</p>
-            </div>
+   <!-- banner section start -->
+
+
+   <div class="banner_section layout_padding">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+         <div class="carousel-inner" id="banner-here">
+
          </div>
-         <div class="product_section_2 layout_padding">
-            <div class="row">
-               <div class="col-lg-3 col-sm-6">
-                  <div class="product_box">
-                     <h4 class="bursh_text">Jewelry</h4>
-                     <p class="lorem_text">Elevate your style, assert your distinguished class. </p>
-                     <img src="images/img-20.jpg" class="image_1">
-                     <div class="btn_main">
-                        <div class="buy_bt">
-                           <ul>
-                              <li><a href="#">Buy Now</a></li>
-                              <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-20.jpg')">Add to cart</a></li>
+      </div>
+   </div>
+   <script>
+      function genBanner() {
+         const content =   ["Tình yêu đích thực bắt đầu từ những điều nhỏ bé nhưng ý nghĩa. Hãy để món quà này thay bạn gửi đi lời hứa trọn đời, sự trân trọng và yêu thương sâu sắc nhất. Đặt ngay hôm nay để không bỏ lỡ cơ hội biến khoảnh khắc đặc biệt thành vĩnh cửu", 
+                           "Ngày 8/3 là dịp đặc biệt để tôn vinh những người phụ nữ tuyệt vời trong cuộc sống của chúng ta! Hãy dành tặng họ những món quà ý nghĩa cùng ưu đãi hấp dẫn GIẢM GIÁ LÊN ĐẾN 40%. Vì họ xứng đáng với những điều tốt đẹp nhất! ",];
+         const pic = ["images/banner-img-1.jpg", "images/banner-img-2.jpg",];    
 
-                           </ul>
-                        </div>
-                        <h3 class="price_text">Price $30</h3>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-3 col-sm-6">
-                  <div class="product_box">
-                     <h4 class="bursh_text">Jewelry</h4>
-                     <p class="lorem_text">Elevate your style, assert your distinguished class. </p>
-                     <img src="images/img-17.jpg" class="image_1">
-                     <div class="btn_main">
-                        <div class="buy_bt">
-                           <ul>
+         const par = document.getElementById("banner-here");
+         for (index in content) {
+            console.log(content[index]);
+            console.log(pic[index]);
 
-                              <li><a href="#">Buy Now</a></li>
-                              <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-17.jpg')">Add to cart</a></li>
+            const div1 = document.createElement("div");
+            if (index == 0){
+               div1.setAttribute("class", "carousel-item active");
+            }
+            else{
+               div1.setAttribute("class", "carousel-item");
+            }
+            // div1.setAttribute("id", index);
 
-                           </ul>
-                        </div>
-                        <h3 class="price_text">Price $30</h3>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-3 col-sm-6">
-                  <div class="product_box">
-                     <h4 class="bursh_text">Jewelry</h4>
-                     <p class="lorem_text">Elevate your style, assert your distinguished class. </p>
-                     <img src="images/img-18.jpg" class="image_1">
-                     <div class="btn_main">
-                        <div class="buy_bt">
-                           <ul>
+            const div2 = document.createElement("div");
+            div2.setAttribute("class", "container");
 
-                              <li><a href="#">Buy Now</a></li>
-                              <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-18.jpg')">Add to cart</a></li>
+            const div3 = document.createElement("div");
+            div3.setAttribute("class", "row");
 
-                           </ul>
-                        </div>
-                        <h3 class="price_text">Price $30</h3>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-3 col-sm-6">
-                  <div class="product_box">
-                     <h4 class="bursh_text">Jewelry</h4>
-                     <p class="lorem_text">Elevate your style, assert your distinguished class. </p>
-                     <img src="images/img-19.jpg" class="image_1">
-                     <div class="btn_main">
-                        <div class="buy_bt">
-                           <ul>
+            const div4 = document.createElement("div");
+            div4.setAttribute("class", "col-sm-6");
 
-                              <li><a href="#">Buy Now</a></li>
-                              <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-19.jpg')">Add to cart</a></li>
-
-                           </ul>
-                        </div>
-                        <h3 class="price_text">Price $30</h3>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="row">
-               <div class="col-lg-3 col-sm-6">
-                  <div class="product_box">
-                     <h4 class="bursh_text">Jewelry</h4>
-                     <p class="lorem_text">Elevate your style, assert your distinguished class. </p>
-                     <img src="images/img-17-3.jpg" class="image_1">
-                     <div class="btn_main">
-                        <div class="buy_bt">
-                           <ul>
-
-                              <li><a href="#">Buy Now</a></li>
-                              <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-17-3.jpg')">Add to cart</a></li>
-
-                           </ul>
-                        </div>
-                        <h3 class="price_text">Price $30</h3>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-3 col-sm-6">
-                  <div class="product_box">
-                     <h4 class="bursh_text">Jewelry</h4>
-                     <p class="lorem_text">Elevate your style, assert your distinguished class. </p>
-                     <img src="images/img-17-1.jpg" class="image_1">
-                     <div class="btn_main">
-                        <div class="buy_bt">
-                           <ul>
-
-                              <li><a href="#">Buy Now</a></li>
-                              <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-17-1.jpg')">Add to cart</a></li>
-
-                           </ul>
-                        </div>
-                        <h3 class="price_text">Price $30</h3>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-3 col-sm-6">
-                  <div class="product_box">
-                     <h4 class="bursh_text">Jewelry</h4>
-                     <p class="lorem_text">Elevate your style, assert your distinguished class. </p>
-                     <img src="images/img-17-2.jpg" class="image_1">
-                     <div class="btn_main">
-                        <div class="buy_bt">
-                           <ul>
-
-                              <li><a href="#">Buy Now</a></li>
-                              <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-17-2.jpg')">Add to cart</a></li>
-
-                           </ul>
-                        </div>
-                        <h3 class="price_text">Price $30</h3>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-3 col-sm-6">
-                  <div class="product_box">
-                     <h4 class="bursh_text">Jewelry</h4>
-                     <p class="lorem_text">Elevate your style, assert your distinguished class. </p>
-                     <img src="images/img-17-4.jpg" class="image_1">
-                     <div class="btn_main">
-                        <div class="buy_bt">
-                           <ul>
-
-                              <li><a href="#">Buy Now</a></li>
-                              <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-17-4.jpg')">Add to cart</a></li>
-
-                           </ul>
-                        </div>
-                        <h3 class="price_text">Price $30</h3>
-                     </div>
-                  </div>
-               </div>
-            </div>
+            const h = document.createElement("h1");
+            h.setAttribute("class", "banner_taital");
+            h.innerHTML = "Lustro Silver";
             
+            const p = document.createElement("p");
+            p.setAttribute("class", "banner_text");
+            p.innerHTML = content[index];
+
+            const div5 = document.createElement("div");
+            div5.setAttribute("class", "read_bt");
+            div5.innerHTML = "<a href=\"./products.html\">Buy Now</a>";
+
+            div4.appendChild(h);
+            div4.appendChild(p);
+            div4.appendChild(div5);
+
+            const div6 = document.createElement("div");
+            div6.setAttribute("class", "col-sm-6 banner_img");
+
+            const img = document.createElement("img");
+            img.src = pic[index];
+            img.style = "max-height: 400px; width: auto";
+
+            div6.appendChild(img);
+
+            div3.appendChild(div4);
+            div3.appendChild(div6);
+            div2.appendChild(div3);
+            div1.appendChild(div2);
+
+            par.appendChild(div1);
+         }
+      }
+
+      genBanner();
+   </script>
+   <!-- banner section end -->
+   <!-- product section start -->
+   <!-- about section end -->
+   <!-- customer section start -->
+   <!-- customer section end -->
+   <!-- contact section start -->
+   <div class="contact_section layout_padding">
+    
+      <div class="map_main">
+         <div class="map-responsive">
+            <iframe
+               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.0521541091866!2d106.71377517405392!3d10.807317589343338!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528a3c9af5307%3A0x51296f4514739f82!2zMTgwIE5ndXnhu4VuIEdpYSBUcsOtLCBQaMaw4budbmcgMjUsIELDrG5oIFRo4bqhbmgsIEjhu5MgQ2jDrSBNaW5oIDcyMzA4LCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1740515883959!5m2!1svi!2s"
+               width="600" height="400" frameborder="0" style="border:0; width: 100%;" allowfullscreen="" loading="lazy"
+               referrerpolicy="no-referrer-when-downgrade"></iframe>
          </div>
       </div>
-   </div>
-   <!-- product section end -->
-   <!-- footer section start -->
-   <div class="map_main">
-      <div class="map-responsive">
-         <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.0521541091866!2d106.71377517405392!3d10.807317589343338!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528a3c9af5307%3A0x51296f4514739f82!2zMTgwIE5ndXnhu4VuIEdpYSBUcsOtLCBQaMaw4budbmcgMjUsIELDrG5oIFRo4bqhbmgsIEjhu5MgQ2jDrSBNaW5oIDcyMzA4LCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1740515883959!5m2!1svi!2s"
-            width="600" height="400" frameborder="0" style="border:0; width: 100%;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-   </div>
    </div>
    <!-- contact section end -->
    <!-- footer section start -->
-   
    <div class="footer_section layout_padding">
       <div class="container">
          <div class="footer_logo"><a href="index.html"><img src="./images/logo.png" style="width: 250px;"></a></div>
@@ -259,11 +182,11 @@
             <div class="col-md-3">
                <h3 class="footer_heading">VỀ LUSTRO SILVER</h3>
                <ul class="footer_links">
-                  <li><a href="#">Câu chuyện Lustro</a></li>
-                  <li><a href="#">Tuyển dụng</a></li>
-                  <li><a href="#">Xuất khẩu</a></li>
-                  <li><a href="#">Kinh doanh sỉ</a></li>
-                  <li><a href="#">Kiểm định kim cương</a></li>
+                  <li><a href="./about.html">Câu chuyện Lustro</a></li>
+                  <li><a href="./about.html">Tuyển dụng</a></li>
+                  <li><a href="./about.html">Xuất khẩu</a></li>
+                  <li><a href="./about.html">Kinh doanh sỉ</a></li>
+                  <li><a href="./about.html">Kiểm định kim cương</a></li>
                </ul>
             </div>
             <div class="col-md-3">
@@ -333,8 +256,6 @@
          </div>
       </div>
    </div>
-
-   
    <!-- footer section end -->
    <!-- copyright section start -->
    <!-- <div class="copyright_section">
@@ -379,19 +300,22 @@
          event.preventDefault();
       });
 
-      let cartCount = 0;
-      const cartItems = [];
-      let cartTimeout;
+      let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
       function addToCart(productName, price, imageUrl) {
-         // Always add a new item to the cart
-         cartItems.push({ name: productName, price: price, image: imageUrl, quantity: 1 });
+         const existingItem = cartItems.find(item => item.name === productName);
+         if (existingItem) {
+            existingItem.quantity += 1;
+         } else {
+            cartItems.push({ name: productName, price: price, image: imageUrl, quantity: 1 });
+         }
+         localStorage.setItem('cartItems', JSON.stringify(cartItems));
          updateCartCount();
          updateCartNavbar();
       }
 
       function updateCartCount() {
-         cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+         const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
          document.getElementById("cartCount").innerText = cartCount;
       }
 
@@ -503,7 +427,31 @@
       // Reset the timeout whenever the cart is interacted with
       document.getElementById("cartNavbar").addEventListener('mouseover', resetCartTimeout);
       document.getElementById("cartNavbar").addEventListener('click', resetCartTimeout);
+
+      function buyNow(productName, price, imageUrl) {
+         // Add to cart
+         addToCart(productName, price, imageUrl);
+
+         // Store for immediate checkout
+         const product = { name: productName, price: price, image: imageUrl, quantity: 1 };
+         localStorage.setItem('buyNowProduct', JSON.stringify(product));
+
+         // Redirect to checkout
+         window.location.href = 'checkout.html';
+      }
    </script>
+   <!-- cart navbar start -->
+   <div id="cartNavbar" style="display: none; position: fixed; top: 0; right: 0; background-color: white; width: 300px; height: 100%; overflow-y: auto; box-shadow: -2px 0 5px rgba(0,0,0,0.5);">
+      <i class="fa-solid fa-circle-xmark" onclick="closeCartNavbar()" style="position: absolute; top: 10px; right: 10px; font-size: 24px; cursor: pointer;"></i>
+      <h2>Cart</h2>
+      <ul id="cartItems"></ul>
+      <div id="cartFooter" style="position: absolute; bottom: 0; width: 100%; background-color: #f8f8f8; padding: 10px; box-shadow: 0 -2px 5px rgba(0,0,0,0.1);">
+         <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span id="totalPrice" style="font-size: 18px;">Total: $0</span>
+            <button onclick="checkout()" style="padding: 5px 10px; font-size: 16px;">Checkout</button>
+         </div>
+      </div>
+   </div>
 </body>
 
 </html>
