@@ -89,15 +89,25 @@
               </div>
                <span class="toggle_icon" onclick="openNav()"><img src="images/toggle-icon.png"></span>
                <a class="logo" href="index.html"><img src="images/logo.png"></a></a>
-               <form class="form-inline ">
-                  <div class="login_text">
-                     <ul>
-                        <li><a href="#"><img src="images/user-icon.png"></a></li>
-                        <li><a href="#"><img src="images/bag-icon.png"></a></li>
-                        <li><a href="#"><img src="images/search-icon.png"></a></li>
-                     </ul>
-                  </div>
-               </form>
+               <form class="form-inline" id="searchForm">
+                <div class="login_text">
+                   <ul>
+                      <li><a href="#"><img src="images/user-icon.png"></a></li>
+                      <li>
+                         <a href="#" onclick="toggleCartNavbar()" style="position: relative;">
+                            <img alt="cart" loading="lazy" width="18" height="18" decoding="async" data-nimg="1" src="https://cdn.pnj.io/images/image-update/layout/icon-cart-new.svg" style="color: transparent;">
+                            <span id="cartCount" style="position: absolute; bottom: -5px; right: -5px; background-color: red; color: white; border-radius: 50%; padding: 1px 4px; font-size: 8px;">0</span>
+                         </a>
+                      </li>
+                      <li>
+                         <button onclick="toggleSearch()">
+                            <img src="images/search-icon.png">
+                         </button>
+                         <input type="text" style="display: none;" id="searchInput" placeholder="Search" aria-label="Search">
+                      </li>
+                   </ul>
+                </div>
+             </form>
             </nav>
          </div>
       </div>
@@ -315,14 +325,16 @@
          
          <div class="payment_methods mt-4">
             <h3 class="footer_heading">PHƯƠNG THỨC THANH TOÁN</h3>
-            <div class="payment_icons">
-               <img src="images/user-icon.png" alt="Visa">
-               <img src="images/bag-icon.png" alt="Mastercard">
-               <img src="images/search-icon.png" alt="JCB">
-               <img src="images/mail-icon.png" alt="Momo">
-               <img src="images/call-icon.png" alt="ZaloPay">
-               <img src="images/map-icon.png" alt="VNPay">
-            </div>
+            <ul class="payment_methods_list">
+               <li>Thanh toán tiền mặt khi nhận hàng (COD)</li>
+               <li>Thanh toán chuyển khoản</li>
+               <li>Thanh toán thẻ quốc tế (VISA, Master, JCB)</li>
+               <li>Trả góp thẻ tín dụng 0%</li>
+               <li>Thanh toán VNPAY</li>
+               <li>Thanh toán bằng ví MoMo</li>
+               <li>Quét mã QR</li>
+               <li>Thanh toán Zalopay - QR đa năng</li>
+            </ul>
          </div>
          
          <div class="certifications mt-4">
