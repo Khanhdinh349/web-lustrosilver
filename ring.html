@@ -97,7 +97,6 @@
                         <div class="buy_bt">
                            <ul>
                               <li><a href="#">Buy Now</a></li>
-                              <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-5.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
                         <h3 class="price_text">Price $30</h3>
@@ -114,8 +113,6 @@
                            <ul>
 
                               <li><a href="#">Buy Now</a></li>
-                              <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-6.jpg')">Add to cart</a></li>
-
                            </ul>
                         </div>
                         <h3 class="price_text">Price $30</h3>
@@ -132,8 +129,6 @@
                            <ul>
 
                               <li><a href="#">Buy Now</a></li>
-                              <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-7.jpg')">Add to cart</a></li>
-
                            </ul>
                         </div>
                         <h3 class="price_text">Price $30</h3>
@@ -150,8 +145,6 @@
                            <ul>
 
                               <li><a href="#">Buy Now</a></li>
-                              <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-8.jpg')">Add to cart</a></li>
-
                            </ul>
                         </div>
                         <h3 class="price_text">Price $30</h3>
@@ -170,8 +163,6 @@
                            <ul>
 
                               <li><a href="#">Buy Now</a></li>
-                              <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-5-5.jpg')">Add to cart</a></li>
-
                            </ul>
                         </div>
                         <h3 class="price_text">Price $30</h3>
@@ -188,8 +179,6 @@
                            <ul>
 
                               <li><a href="#">Buy Now</a></li>
-                              <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-5-6.jpg')">Add to cart</a></li>
-
                            </ul>
                         </div>
                         <h3 class="price_text">Price $30</h3>
@@ -206,8 +195,6 @@
                            <ul>
 
                               <li><a href="#">Buy Now</a></li>
-                              <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-5-7.jpg')">Add to cart</a></li>
-
                            </ul>
                         </div>
                         <h3 class="price_text">Price $30</h3>
@@ -224,8 +211,6 @@
                            <ul>
 
                               <li><a href="#">Buy Now</a></li>
-                              <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-5-8.jpg')">Add to cart</a></li>
-
                            </ul>
                         </div>
                         <h3 class="price_text">Price $30</h3>
@@ -377,131 +362,6 @@
       document.getElementById("searchForm").addEventListener("submit", function(event) {
          event.preventDefault();
       });
-
-      let cartCount = 0;
-      const cartItems = [];
-      let cartTimeout;
-
-      function addToCart(productName, price, imageUrl) {
-         // Always add a new item to the cart
-         cartItems.push({ name: productName, price: price, image: imageUrl, quantity: 1 });
-         updateCartCount();
-         updateCartNavbar();
-      }
-
-      function updateCartCount() {
-         cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
-         document.getElementById("cartCount").innerText = cartCount;
-      }
-
-      function updateCartNavbar() {
-         const cartItemsList = document.getElementById("cartItems");
-         cartItemsList.innerHTML = '';
-         let totalPrice = 0;
-         cartItems.forEach((item, index) => {
-            const li = document.createElement('li');
-            li.style.display = 'flex';
-            li.style.alignItems = 'flex-start';
-            li.style.marginBottom = '20px';
-
-            const img = document.createElement('img');
-            img.src = item.image;
-            img.style.width = '80px';
-            img.style.height = '80px';
-            img.style.marginRight = '10px';
-
-            const details = document.createElement('div');
-            details.style.flex = '1';
-
-            const text = document.createElement('div');
-            text.textContent = item.name;
-            text.style.marginBottom = '5px';
-            text.style.fontSize = '18px';
-
-            const quantityControls = document.createElement('div');
-            quantityControls.style.display = 'flex';
-            quantityControls.style.alignItems = 'center';
-            quantityControls.style.marginBottom = '5px';
-
-            const minusButton = document.createElement('button');
-            minusButton.textContent = '-';
-            minusButton.style.margin = '0 5px';
-            minusButton.style.fontSize = '16px';
-            minusButton.onclick = () => changeQuantity(index, -1);
-
-            const quantityText = document.createElement('span');
-            quantityText.textContent = `x ${item.quantity}`;
-            quantityText.style.margin = '0 5px';
-            quantityText.style.fontSize = '16px';
-
-            const plusButton = document.createElement('button');
-            plusButton.textContent = '+';
-            plusButton.style.margin = '0 5px';
-            plusButton.style.fontSize = '16px';
-            plusButton.onclick = () => changeQuantity(index, 1);
-
-            const priceText = document.createElement('div');
-            priceText.textContent = `$${item.price * item.quantity}`;
-            priceText.style.textAlign = 'right';
-            priceText.style.fontSize = '18px';
-
-            quantityControls.appendChild(minusButton);
-            quantityControls.appendChild(quantityText);
-            quantityControls.appendChild(plusButton);
-
-            details.appendChild(text);
-            details.appendChild(quantityControls);
-            details.appendChild(priceText);
-
-            li.appendChild(img);
-            li.appendChild(details);
-            cartItemsList.appendChild(li);
-
-            totalPrice += item.price * item.quantity;
-         });
-
-         document.getElementById("totalPrice").textContent = `Total: $${totalPrice}`;
-      }
-
-      function changeQuantity(index, delta) {
-         cartItems[index].quantity += delta;
-         if (cartItems[index].quantity <= 0) {
-            cartItems.splice(index, 1);
-         }
-         updateCartCount();
-         updateCartNavbar();
-      }
-
-      function toggleCartNavbar() {
-         const cartNavbar = document.getElementById("cartNavbar");
-         if (cartNavbar.style.display === 'none' || cartNavbar.style.display === '') {
-            cartNavbar.style.display = 'block';
-            resetCartTimeout();
-         } else {
-            cartNavbar.style.display = 'none';
-            clearTimeout(cartTimeout);
-         }
-      }
-
-      function closeCartNavbar() {
-         document.getElementById("cartNavbar").style.display = 'none';
-         clearTimeout(cartTimeout);
-      }
-
-      function resetCartTimeout() {
-         clearTimeout(cartTimeout);
-         cartTimeout = setTimeout(closeCartNavbar, 5000); // 5000 milliseconds = 5 seconds
-      }
-
-      function checkout() {
-         // Store cart items in local storage
-         localStorage.setItem('cartItems', JSON.stringify(cartItems));
-         window.location.href = 'checkout.html'; // Redirect to checkout.html
-      }
-
-      // Reset the timeout whenever the cart is interacted with
-      document.getElementById("cartNavbar").addEventListener('mouseover', resetCartTimeout);
-      document.getElementById("cartNavbar").addEventListener('click', resetCartTimeout);
    </script>
 </body>
 
