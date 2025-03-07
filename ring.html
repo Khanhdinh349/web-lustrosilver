@@ -101,7 +101,7 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-5.jpg')">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-5.jpg')">Add to cart</a></li>
                            </ul>
                         </div>
@@ -118,7 +118,7 @@
                         <div class="buy_bt">
                            <ul>
 
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-6.jpg')">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-6.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -136,7 +136,7 @@
                         <div class="buy_bt">
                            <ul>
 
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-7.jpg')">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-7.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -154,7 +154,7 @@
                         <div class="buy_bt">
                            <ul>
 
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-8.jpg')">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-8.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -174,7 +174,7 @@
                         <div class="buy_bt">
                            <ul>
 
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-5-5.jpg')">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-5-5.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -192,7 +192,7 @@
                         <div class="buy_bt">
                            <ul>
 
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-5-6.jpg')">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-5-6.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -210,7 +210,7 @@
                         <div class="buy_bt">
                            <ul>
 
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-5-7.jpg')">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-5-7.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -228,7 +228,7 @@
                         <div class="buy_bt">
                            <ul>
 
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-5-8.jpg')">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-5-8.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -383,19 +383,22 @@
          event.preventDefault();
       });
 
-      let cartCount = 0;
-      const cartItems = [];
-      let cartTimeout;
+      let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
       function addToCart(productName, price, imageUrl) {
-         // Always add a new item to the cart
-         cartItems.push({ name: productName, price: price, image: imageUrl, quantity: 1 });
+         const existingItem = cartItems.find(item => item.name === productName);
+         if (existingItem) {
+            existingItem.quantity += 1;
+         } else {
+            cartItems.push({ name: productName, price: price, image: imageUrl, quantity: 1 });
+         }
+         localStorage.setItem('cartItems', JSON.stringify(cartItems));
          updateCartCount();
          updateCartNavbar();
       }
 
       function updateCartCount() {
-         cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+         const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
          document.getElementById("cartCount").innerText = cartCount;
       }
 
@@ -507,6 +510,29 @@
       // Reset the timeout whenever the cart is interacted with
       document.getElementById("cartNavbar").addEventListener('mouseover', resetCartTimeout);
       document.getElementById("cartNavbar").addEventListener('click', resetCartTimeout);
+
+      function buyNow(productName, price, imageUrl) {
+         // Redirect to checkout page with product name and image
+         window.location.href = `checkout.html?productName=${encodeURIComponent(productName)}&price=${price}&productImage=${encodeURIComponent(imageUrl)}`;
+     }
+
+     function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+      }
+  
+      // Get product name and image from URL
+      const productName = getQueryParam('productName');
+      const productImage = getQueryParam('productImage');
+  
+      // Display product name and image in checkout
+      if (productName) {
+         document.getElementById('productName').textContent = productName;
+      }
+  
+      if (productImage) {
+         document.querySelector('.pic').src = productImage;
+      }
    </script>
    <!-- cart navbar start -->
    <div id="cartNavbar" style="display: none; position: fixed; top: 0; right: 0; background-color: white; width: 300px; height: 100%; overflow-y: auto; box-shadow: -2px 0 5px rgba(0,0,0,0.5);">

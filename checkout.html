@@ -161,6 +161,7 @@
             </div>
          </div>
       </div>
+      <div id="checkoutContainer"></div>
       <script>
          // Retrieve cart items from local storage
          const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -341,6 +342,48 @@
          function closeNav() {
            document.getElementById("mySidenav").style.width = "0";
          }
+         // Retrieve the product details from local storage
+        const product = JSON.parse(localStorage.getItem('buyNowProduct'));
+
+        if (product) {
+            const productDetailsDiv = document.getElementById('productDetails');
+            productDetailsDiv.innerHTML = `
+                <h2>${product.name}</h2>
+                <img src="${product.image}" alt="${product.name}" style="width: 100px; height: auto;">
+                <p>Price: $${product.price}</p>
+                <p>Quantity: ${product.quantity}</p>
+            `;
+        } else {
+            document.getElementById('productDetails').innerText = 'No product selected.';
+        }
+
+        // Handle form submission
+        document.getElementById('paymentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Payment processed for ' + product.name);
+            // Here you would typically send the payment details to your server
+        });
+
+        function buyNow(productName, price, imageUrl) {
+            // Retrieve existing items from localStorage
+            let checkoutItems = JSON.parse(localStorage.getItem('checkoutItems')) || [];
+
+            // Create a new item for the selected product
+            const selectedItem = {
+                name: productName,
+                price: price,
+                image: imageUrl
+            };
+
+            // Add the new item to the list
+            checkoutItems.push(selectedItem);
+
+            // Store the updated list in localStorage
+            localStorage.setItem('checkoutItems', JSON.stringify(checkoutItems));
+
+            // Redirect to checkout page
+            window.location.href = 'checkout.html';
+        }
       </script> 
       
    </body>

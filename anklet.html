@@ -101,7 +101,7 @@
                      <div class="btn_main">
                         <div class="buy_bt">
                            <ul>
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-13.jpg')">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-13.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -119,7 +119,7 @@
                         <div class="buy_bt">
                            <ul>
 
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-14.jpg')">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-14.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -137,7 +137,7 @@
                         <div class="buy_bt">
                            <ul>
 
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-15.jpg')">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-15.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -155,7 +155,7 @@
                         <div class="buy_bt">
                            <ul>
 
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-16.jpg')">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-16.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -175,7 +175,7 @@
                         <div class="buy_bt">
                            <ul>
 
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-13-1.jpg')">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-13-1.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -193,7 +193,7 @@
                         <div class="buy_bt">
                            <ul>
 
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-13-3.jpg')">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-13-3.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -211,7 +211,7 @@
                         <div class="buy_bt">
                            <ul>
 
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-13-2.jpg')">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-13-2.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -229,7 +229,7 @@
                         <div class="buy_bt">
                            <ul>
 
-                              <li><a href="#">Buy Now</a></li>
+                              <li><a href="#" onclick="buyNow('Jewelry', 30, './images/img-13-4.jpg')">Buy Now</a></li>
                               <li><a href="#" onclick="addToCart('Jewelry', 30, './images/img-13-4.jpg')">Add to cart</a></li>
 
                            </ul>
@@ -384,19 +384,22 @@
          event.preventDefault();
       });
 
-      let cartCount = 0;
-      const cartItems = [];
-      let cartTimeout;
+      let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
       function addToCart(productName, price, imageUrl) {
-         // Always add a new item to the cart
-         cartItems.push({ name: productName, price: price, image: imageUrl, quantity: 1 });
+         const existingItem = cartItems.find(item => item.name === productName);
+         if (existingItem) {
+            existingItem.quantity += 1;
+         } else {
+            cartItems.push({ name: productName, price: price, image: imageUrl, quantity: 1 });
+         }
+         localStorage.setItem('cartItems', JSON.stringify(cartItems));
          updateCartCount();
          updateCartNavbar();
       }
 
       function updateCartCount() {
-         cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+         const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
          document.getElementById("cartCount").innerText = cartCount;
       }
 
@@ -508,6 +511,18 @@
       // Reset the timeout whenever the cart is interacted with
       document.getElementById("cartNavbar").addEventListener('mouseover', resetCartTimeout);
       document.getElementById("cartNavbar").addEventListener('click', resetCartTimeout);
+
+      function buyNow(productName, price, imageUrl) {
+         // Add to cart
+         addToCart(productName, price, imageUrl);
+
+         // Store for immediate checkout
+         const product = { name: productName, price: price, image: imageUrl, quantity: 1 };
+         localStorage.setItem('buyNowProduct', JSON.stringify(product));
+
+         // Redirect to checkout
+         window.location.href = 'checkout.html';
+      }
    </script>
    <!-- cart navbar start -->
    <div id="cartNavbar" style="display: none; position: fixed; top: 0; right: 0; background-color: white; width: 300px; height: 100%; overflow-y: auto; box-shadow: -2px 0 5px rgba(0,0,0,0.5);">
