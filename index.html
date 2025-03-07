@@ -35,6 +35,31 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
       media="screen">
    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+   <style>
+      #suggestions {
+         display: none;
+         position: absolute;
+         background-color: white;
+         border: 1px solid #ccc;
+         list-style-type: none;
+         padding: 0;
+         margin: 0;
+         width: 300px;
+         z-index: 1000; /* Ensure this is higher than other elements */
+      }
+
+      #suggestions li {
+         display: flex;
+         align-items: center;
+         padding: 10px;
+         cursor: pointer;
+         color: black; /* Set text color to black */
+      }
+
+      #suggestions li:hover {
+         background-color: #f0f0f0;
+      }
+   </style>
 </head>
 
 <body>
@@ -68,11 +93,14 @@
                            <span id="cartCount" style="position: absolute; bottom: -5px; right: -5px; background-color: red; color: white; border-radius: 50%; padding: 1px 4px; font-size: 8px;">0</span>
                         </a>
                      </li>
-                     <li>
+                     <li style="position: relative;">
                         <button onclick="toggleSearch()">
                            <img src="images/search-icon.png">
                         </button>
-                        <input type="text" style="display: none;" id="searchInput" placeholder="Search" aria-label="Search">
+                        <input type="text" style="display: none;" id="searchInput" placeholder="Search" aria-label="Search" oninput="showSuggestions(this.value)">
+                        <ul id="suggestions">
+                           <!-- Suggestions will be dynamically inserted here -->
+                        </ul>
                      </li>
                   </ul>
                </div>
@@ -463,12 +491,65 @@
          document.getElementById("mySidenav").style.width = "0";
       }
 
+      const ringItems = [
+         { name: "Nhẫn ", image: "images/img-5.jpg" },
+         { name: "Nhẫn ", image: "images/img-6.jpg" },
+         { name: "Nhẫn ", image: "images/img-7.jpg" },
+         { name: "Nhẫn ", image: "images/img-8.jpg" },
+         { name: "Nhẫn ", image: "images/img-8-1.jpg" },
+         { name: "Nhẫn ", image: "images/img-8-2.jpg" },
+         { name: "Nhẫn ", image: "images/img-8-3.jpg" },
+         { name: "Nhẫn ", image: "images/img-8-4.jpg" }
+      ];
+
+      function showSuggestions(query) {
+         const suggestions = document.getElementById('suggestions');
+         suggestions.innerHTML = ''; // Clear previous suggestions
+
+         if (query.length === 0) {
+            suggestions.style.display = 'none';
+            return;
+         }
+
+         const filteredItems = query.toLowerCase().includes('nhẫn') ? ringItems : [];
+
+         filteredItems.forEach(item => {
+            const li = document.createElement('li');
+            li.style.display = 'flex';
+            li.style.alignItems = 'center';
+            li.style.padding = '5px';
+            li.style.cursor = 'pointer';
+            li.onclick = () => redirectToRingPage();
+
+            const img = document.createElement('img');
+            img.src = item.image;
+            img.style.width = '40px';
+            img.style.height = '40px';
+            img.style.marginRight = '10px';
+
+            const text = document.createElement('span');
+            text.textContent = item.name;
+
+            li.appendChild(img);
+            li.appendChild(text);
+            suggestions.appendChild(li);
+         });
+
+         suggestions.style.display = filteredItems.length > 0 ? 'block' : 'none';
+      }
+
+      function redirectToRingPage() {
+         window.location.href = 'ring.html';
+      }
+
       function toggleSearch() {
          const searchInput = document.getElementById("searchInput");
          if (searchInput.style.display === "none" || searchInput.style.display === "") {
             searchInput.style.display = "inline-block";
+            searchInput.focus();
          } else {
             searchInput.style.display = "none";
+            document.getElementById('suggestions').style.display = 'none';
          }
       }
 
